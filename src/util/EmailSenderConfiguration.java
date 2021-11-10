@@ -66,6 +66,8 @@ public class EmailSenderConfiguration implements EmailSenderType {
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
 
+        //testing git
+
         Email email =new Email();
         Authenticator authenticator =
                 new Authenticator() {
