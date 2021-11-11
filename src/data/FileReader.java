@@ -8,7 +8,7 @@ public interface FileReader {
 
     default String emailText () throws FileNotFoundException {
 
-       File file = new File("C:\\Users\\klaus\\Desktop\\IrisaTest.txt");
+       File file = new File("./resources/emailText.txt");
         Scanner scan = new Scanner(file);
         String text="";
         while (scan.hasNextLine()){
@@ -16,4 +16,17 @@ public interface FileReader {
         }
         return text;
     }
+    default String subjectText () throws FileNotFoundException {
+
+        File file = new File("./resources/subjectText.txt");
+        Scanner scan = new Scanner(file);
+        String text="";
+        while (scan.hasNextLine()){
+            text = text.concat(scan.nextLine()+"\n");
+        }
+        return text;
+    }
+
+
+
 }
