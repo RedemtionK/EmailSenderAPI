@@ -2,6 +2,7 @@ package main;
 
 import data.FileReader;
 import util.Database;
+import util.Email;
 import util.EmailSenderConfiguration;
 
 import javax.mail.MessagingException;
@@ -12,7 +13,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class SendEmail extends Database implements FileReader {
-    private  static final Properties properties = new Properties();
+     private  static final Properties properties = new Properties();
     static {
         try {
             properties.load(SendEmail.class.getResourceAsStream("/db.properties"));
@@ -21,6 +22,8 @@ public class SendEmail extends Database implements FileReader {
             e.printStackTrace();
         }
     }
+
+
 
     public static void main(String[] args) throws FileNotFoundException, MessagingException, SQLException {
 
@@ -32,7 +35,7 @@ public class SendEmail extends Database implements FileReader {
         String subject = fr.subjectText();
 
 
-        EmailSenderConfiguration email = new EmailSenderConfiguration();
+        EmailSenderConfiguration senderConfiguration = new EmailSenderConfiguration();
         Database db = new Database();
         db.connect(properties.getProperty("servername"),
                 properties.getProperty("databaseName"),
@@ -52,7 +55,7 @@ public class SendEmail extends Database implements FileReader {
 
             String emailFromDb = result.getString(2);
             System.out.println(emailFromDb);
-            email.send(emailFromDb,
+            senderConfiguration.send(emailFromDb,
                     subject,
                     emailText
             );

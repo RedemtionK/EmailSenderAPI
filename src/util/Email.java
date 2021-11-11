@@ -1,8 +1,8 @@
 package util;
 
 public class Email {
-    private String myAccountEmail = "aejkfjaejkfj@gmail.com";
-    private String password= "kursijava2021";
+    private String myAccountEmail = "email@gmail.com";
+    private String password= "password";
 
 
     public String getMyAccountEmail() {

@@ -23,6 +23,11 @@ public class EmailSenderConfiguration implements EmailSenderType {
         properties.put("mail.smtp.starttls.enable", "true");
     }
     private static final Email email = new Email();
+
+    static {
+        email.setMyAccountEmail("email@gmail.com");
+        email.setPassword("password");
+    }
     private static final Authenticator authenticator =
             new Authenticator() {
                 @Override
