@@ -23,7 +23,7 @@ public class EmailSenderConfiguration implements EmailSenderType {
         properties.put("mail.smtp.starttls.enable", "true");
     }
     private static final Email email = new Email();
-
+// Configure email
     static {
         email.setMyAccountEmail("email@gmail.com");
         email.setPassword("password");
@@ -41,7 +41,7 @@ public class EmailSenderConfiguration implements EmailSenderType {
     private static final Message message = new MimeMessage(session);
 
 
-
+//without subject
     @Override
     public void send(String to, String text) throws MessagingException {
 
@@ -52,7 +52,7 @@ public class EmailSenderConfiguration implements EmailSenderType {
         System.out.println("Mail has been sent");
 
     }
-
+    // with subject
     @Override
     public void send(String to, String subject, String text) throws MessagingException {
         message.setFrom(new InternetAddress(email.getMyAccountEmail()));

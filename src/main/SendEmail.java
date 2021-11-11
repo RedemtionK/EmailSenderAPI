@@ -46,6 +46,9 @@ public class SendEmail extends Database implements FileReader {
         // Add emails into database
 //        db.executeUpdate("INSERT INTO databaseName(COLUMN_1, COLUMN_2,..)\n" +
 //        "VALUES (VALUE_1,VALUE_2,..)");
+
+
+        // select all emails from database or a specific email if where clause is addedS
         ResultSet result = db.executeQuery("select  * from   email ");
 
 
