@@ -12,22 +12,23 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class SendEmail extends Database implements FileReader {
-    private  static Properties properties = new Properties();
-
-    public static void main(String[] args) throws FileNotFoundException, MessagingException, SQLException {
+    private  static final Properties properties = new Properties();
+    static {
         try {
             properties.load(SendEmail.class.getResourceAsStream("/db.properties"));
 
-            //username=klaus
-            // properties.getProperty("username");
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void main(String[] args) throws FileNotFoundException, MessagingException, SQLException {
+
 
 
         FileReader fr = new SendEmail();
         String emailText = fr.emailText();
-        FileReader fr2 = new SendEmail();
+
         String subject = fr.subjectText();
 
 
@@ -39,13 +40,17 @@ public class SendEmail extends Database implements FileReader {
                 properties.getProperty("password"));
 
 
+        // Add emails into database
+//        db.executeUpdate("INSERT INTO databaseName(COLUMN_1, COLUMN_2,..)\n" +
+//        "VALUES (VALUE_1,VALUE_2,..)");
         ResultSet result = db.executeQuery("select  * from   email ");
-        String emailFromDb="";
+
+
 
 
         while(result.next()) {
 
-            emailFromDb = result.getString(2);
+            String emailFromDb = result.getString(2);
             System.out.println(emailFromDb);
             email.send(emailFromDb,
                     subject,
