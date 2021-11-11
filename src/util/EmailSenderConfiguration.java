@@ -97,8 +97,5 @@ public class EmailSenderConfiguration implements EmailSenderType {
 
     }
 
-    @Override
-    public void send(Set<String> to, Set<String> cc, String subject, String text) throws MessagingException {
 
-    }
 }
