@@ -66,7 +66,7 @@ public class EmailSenderConfiguration implements EmailSenderType {
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
 
-        //testing git
+
 
         Email email =new Email();
         Authenticator authenticator =
@@ -89,6 +89,7 @@ public class EmailSenderConfiguration implements EmailSenderType {
         message.setText(text);
 
         Transport.send(message);
+        System.out.println("Mail has been sent");
 
     }
 
